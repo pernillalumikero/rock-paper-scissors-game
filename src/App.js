@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import GameMode from './components/gamemode/GameMode';
+import Singleplayer from './components/singleplayer/Singleplayer';
+import Multiplayer from './components/multiplayer/Multiplayer';
+
 
 function App() {
+
+  const [gameMode, setGameMode] = useState(null);
+  const [start, setStart] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {gameMode === null && start === false ? 
+      <GameMode setGameMode={setGameMode} /> : null}
+      {gameMode === "Singleplayer" 
+      ? <Singleplayer start={start} setStart={setStart} /> 
+      : gameMode === "Multiplayer" 
+      ?  <Multiplayer start={start} setStart={setStart} />
+      : null }
     </div>
   );
 }
