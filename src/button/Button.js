@@ -1,14 +1,16 @@
 import React from 'react'
 
-const Button = ({ value, player1, player2, setPlayer1, setPlayer2 }) => {
+const Button = ({ value, player1, player2, setPlayer1, setPlayer2, isTurn, setIsTurn }) => {
 
 
-    const handleClick = (e) => {
-        if (player1.choice === "") {
+    const handleClick = () => {
+        console.log(player1)
+        if (isTurn) {
             setPlayer1({ ...player1, choice: { value } })
-        }
-        if(player1.choice !== "") {
+            setIsTurn(false)
+        } else {
             setPlayer2({ ...player2, choice: { value } })
+            setIsTurn(true)
         }
     }
 
