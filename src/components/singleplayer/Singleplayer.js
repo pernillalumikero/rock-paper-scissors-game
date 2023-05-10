@@ -3,17 +3,17 @@ import Button from '../../button/Button';
 import StartButton from '../startbutton/StartButton'
 import DecideWinner from '../../decidewinner/DecideWinner';
 import History from '../history/History';
-import Score from '../score/Score';
-
 
 const Singleplayer = ({ start, setStart, gameMode }) => {
 
   const [isTurn, setIsTurn] = useState(true);
+  
   const [player, setPlayer] = useState({
     name: "",
     choice: "",
     isWinner: false,
   })
+
   const [computer, setComputer] = useState({
     name: "Dator Hans",
     choice: "",
