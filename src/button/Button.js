@@ -17,7 +17,6 @@ const Button = ({ value, player1, player2, setPlayer1, setPlayer2, isTurn, setIs
         }
       } else {
         setPlayer1({ ...player1, choice:  value  })
-        setHistory({ ...history, player1Choice:  player1.choice })
         makeComputerChoice()
         
       }

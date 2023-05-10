@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2 }) => {
+const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2, history, setHistory }) => {
     const [result, setResult] = useState('')
     const compareChoices = () => {
 
@@ -9,6 +9,16 @@ const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2 }) => {
         } else if(player1.choice === player2.choice){
             setPlayer1({...player1, isWinner: false})
             setPlayer2({...player2, isWinner: false})
+            setHistory([
+                {
+                    playerOne: player1.name,
+                    playerTwo: player2.name,
+                    player1Choice: player1.choice,
+                    player2Choice: player2.choice,
+                    winner: ""
+                },
+                ...history.splice(0, 9),
+              ]);
             setResult('Oavgjort!')
         } else if( !player1.choice){
             setResult('')
@@ -18,10 +28,30 @@ const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2 }) => {
             (player1.choice === 'Påse' && player2.choice === 'Sten')){
                 setPlayer1({...player1, isWinner: true})
                 setPlayer2({...player2, isWinner: false})
+                setHistory([
+                    {
+                        playerOne: player1.name,
+                        playerTwo: player2.name,
+                        player1Choice: player1.choice,
+                        player2Choice: player2.choice,
+                        winner: player1.name
+                    },
+                    ...history.splice(0, 9),
+                  ]);
                 setResult(`${player1.name} vann!`)
         } else {
                 setPlayer1({...player1, isWinner: false})
                 setPlayer2({...player2, isWinner: true})
+                setHistory([
+                    {
+                        playerOne: player1.name,
+                        playerTwo: player2.name,
+                        player1Choice: player1.choice,
+                        player2Choice: player2.choice,
+                        winner: player2.name
+                    },
+                    ...history.splice(0, 9),
+                  ]);
                 setResult(`${player2.name} vann!`)
         }
     }

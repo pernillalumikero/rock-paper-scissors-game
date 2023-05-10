@@ -19,17 +19,46 @@ const History = ({player1, player2, setHistory, history}) => {
 
   return (
     <>
-      <ol>
+      <ul>
+        {console.log(player1)}
         {history.map((item, index) =>{
-          <li key={index}>
-            {player1.isWinner ? <b>{item.playerOne}{item.player1Choice}</b>
-            : <b>{item.player2Choice}</b>
-            }
-            </li>
-            console.log(item)
+          return (
+          
+            <li key={index}>
+              {item.winner === item.playerOne ?
+              
+                  <>
+                    <b>
+                    {item.playerOne}
+                    {" "}
+                    {item.player1Choice}
+                    </b>
+                  </> 
+                  : <>
+                    {item.playerOne}
+                    {" "}
+                    {item.player1Choice}
+                    </> 
+
+            } {" "}
+              {item.winner === item.playerTwo ?
+              <>
+                    <b>
+                    {item.playerTwo}
+                    {" "}
+                    {item.player2Choice}
+                    </b>
+              </> 
+                  : <>
+                    {item.playerTwo}
+                    {" "}
+                    {item.player2Choice}
+                    </>
+              }
+          </li>
+          )
         })}
-      </ol>
-      {console.log(history)}
+      </ul>
     </>
   )
 }

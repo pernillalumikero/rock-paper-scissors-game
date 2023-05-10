@@ -23,7 +23,8 @@ const Singleplayer = ({ start, setStart, gameMode }) => {
     playerOne: player.name,
     playerTwo: computer.name,
     player1Choice: player.choice,
-    player2Choice: computer.choice
+    player2Choice: computer.choice,
+    winner: ""
   }
 
   ]);
@@ -115,7 +116,7 @@ useEffect (() => {
             setHistory={setHistory}
             history={history}
           />
-          <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer}/>
+          <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer} setHistory= {setHistory} history={history}/>
           <History player1={player} player2={computer} history={history} />
         </>
          }
