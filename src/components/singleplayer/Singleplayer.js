@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Button from '../../button/Button';
 import StartButton from '../startbutton/StartButton'
 import DecideWinner from '../../decidewinner/DecideWinner';
+import History from '../history/History';
 
 
 const Singleplayer = ({ start, setStart, gameMode }) => {
@@ -9,13 +10,24 @@ const Singleplayer = ({ start, setStart, gameMode }) => {
   const [isTurn, setIsTurn] = useState(true);
   const [player, setPlayer] = useState({
     name: "",
-    choice: ""
+    choice: "",
+    isWinner: false,
   })
-
   const [computer, setComputer] = useState({
     name: "Dator Hans",
-    choice: ""
+    choice: "",
+    isWinner: false,
   })
+
+  const [history, setHistory] = useState([{
+    playerOne: player.name,
+    playerTwo: computer.name,
+    player1Choice: player.choice,
+    player2Choice: computer.choice
+  }
+
+  ]);
+
 
   const [game, setGame] = useState([{
     playerName: player.name,
@@ -74,6 +86,8 @@ useEffect (() => {
             setIsTurn={setIsTurn}
             gameMode={gameMode}
             makeComputerChoice={makeComputerChoice}
+            setHistory={setHistory}
+            history={history}
           />
            <Button
             value="Sax"
@@ -85,6 +99,8 @@ useEffect (() => {
             setIsTurn={setIsTurn}
             gameMode={gameMode}
             makeComputerChoice={makeComputerChoice}
+            setHistory={setHistory}
+            history={history}
           />
            <Button
             value="Påse"
@@ -96,8 +112,11 @@ useEffect (() => {
             setIsTurn={setIsTurn}
             gameMode={gameMode}
             makeComputerChoice={makeComputerChoice}
+            setHistory={setHistory}
+            history={history}
           />
           <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer}/>
+          <History player1={player} player2={computer} history={history} />
         </>
          }
     </>
