@@ -1,27 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React from "react"
 
-
-const History = ({player1, player2, setHistory, history}) => {
+const History = ({history}) => {
   
-  
-
-  // useEffect(()=>{
-  //   setHistory([
-  //     {
-  //       playerOne: player1.name,
-  //       playerTwo: player2.name,
-  //       player1Choice: player1.choice,
-  //       player2Choice: player2.choice
-  //     },
-  //     ...history.splice(0, 9),
-  //   ])
-  // },[player1, player2])
-
   return (
     <>
       <ul>
-        {console.log(player1)}
-        {history.map((item, index) =>{
+        {history.length > 1 ? 
+          history.map((item, index) =>{
           return (
           
             <li key={index}>
@@ -57,7 +42,7 @@ const History = ({player1, player2, setHistory, history}) => {
               }
           </li>
           )
-        })}
+        }) : null}
       </ul>
     </>
   )

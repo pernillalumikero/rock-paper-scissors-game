@@ -1,5 +1,4 @@
 import React from 'react'
-import PlayerNameInput from '../playernameinput/PlayerNameInput'
 
 const GameMode = ({setGameMode}) => {
   return (

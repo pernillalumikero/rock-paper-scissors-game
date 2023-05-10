@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Score from '../components/score/Score'
 
 const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2, history, setHistory }) => {
     const [result, setResult] = useState('')
@@ -60,7 +61,10 @@ const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2, history, setHi
     },[player1.choice, player2.choice])
 
   return (
-    <div>{result}</div>
+    <div>
+    <h2>{result}</h2>
+    <Score player1={player1} player2={player2} result={result} />
+    </div>
   )
 }
 

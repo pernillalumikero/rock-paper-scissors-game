@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../../button/Button";
 import StartButton from "../startbutton/StartButton";
 import DecideWinner from "../../decidewinner/DecideWinner";
+import History from "../history/History";
 
 const Multiplayer = ({ start, setStart, gameMode }) => {
   const [player1, setPlayer1] = useState({
@@ -17,18 +18,16 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
     isWinner: false,
   });
 
-  const [game, setGame] = useState([
-    {
-      player1Name: player1.name,
-      player1Choice: player1.choice,
-    },
-    {
-      player2Name: player2.name,
-      player2Choice: player2.choice,
-    },
-  ]);
-
   const [isTurn, setIsTurn] = useState(true);
+
+  const [history, setHistory] = useState([{
+    playerOne: player1.name,
+    playerTwo: player2.name,
+    player1Choice: player1.choice,
+    player2Choice: player2.choice,
+    winner: ""
+  }
+]);
 
   return (
     <>
@@ -64,10 +63,9 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
             setPlayer1={setPlayer1}
             isTurn={isTurn}
             setIsTurn={setIsTurn}
+            setHistory={setHistory}
             gameMode={gameMode}
           />
-          {console.log(player1)}
-          {console.log(player2)}
           <Button
             value="Sax"
             player1={player1}
@@ -76,6 +74,7 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
             setPlayer2={setPlayer2}
             isTurn={isTurn}
             setIsTurn={setIsTurn}
+            setHistory={setHistory}
             gameMode={gameMode}
           />
           <Button
@@ -86,9 +85,14 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
             setPlayer2={setPlayer2}
             isTurn={isTurn}
             setIsTurn={setIsTurn}
+            setHistory={setHistory}
             gameMode={gameMode}
           />
-          <DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2}/>
+          {console.log(player1)}
+          {console.log(player2)}
+          {console.log(history)}
+          <DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2} history={history} setHistory={setHistory}/>
+          <History player1={player1} player2={player2} history={history} />
         </>
       }
     </>

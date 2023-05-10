@@ -3,6 +3,7 @@ import Button from '../../button/Button';
 import StartButton from '../startbutton/StartButton'
 import DecideWinner from '../../decidewinner/DecideWinner';
 import History from '../history/History';
+import Score from '../score/Score';
 
 
 const Singleplayer = ({ start, setStart, gameMode }) => {
@@ -26,17 +27,7 @@ const Singleplayer = ({ start, setStart, gameMode }) => {
     player2Choice: computer.choice,
     winner: ""
   }
-
-  ]);
-
-
-  const [game, setGame] = useState([{
-    playerName: player.name,
-    playerChoice: player.choice
-  }, {
-    computerName: computer.name,
-    computerChoice: computer.choice
-  }])
+]);
 
   const makeComputerChoice = () => {
     const computerClick = parseInt(Math.floor((Math.random() * 3) + 1))
@@ -116,6 +107,7 @@ useEffect (() => {
             setHistory={setHistory}
             history={history}
           />
+          
           <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer} setHistory= {setHistory} history={history}/>
           <History player1={player} player2={computer} history={history} />
         </>

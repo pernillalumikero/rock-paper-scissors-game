@@ -3,7 +3,7 @@ import './App.css';
 import GameMode from './components/gamemode/GameMode';
 import Singleplayer from './components/singleplayer/Singleplayer';
 import Multiplayer from './components/multiplayer/Multiplayer';
-import History from './components/history/History';
+
 
 
 function App() {
