@@ -1,9 +1,12 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react'
+import Button from '../../button/Button';
 import StartButton from '../startbutton/StartButton'
+import DecideWinner from '../../decidewinner/DecideWinner';
 
-const Singleplayer = ({ start, setStart }) => {
 
+const Singleplayer = ({ start, setStart, gameMode }) => {
+
+  const [isTurn, setIsTurn] = useState(true);
   const [player, setPlayer] = useState({
     name: "",
     choice: ""
@@ -22,6 +25,29 @@ const Singleplayer = ({ start, setStart }) => {
     computerChoice: computer.choice
   }])
 
+  const makeComputerChoice = () => {
+    const computerClick = parseInt(Math.floor((Math.random() * 3) + 1))
+
+    if(computerClick === 1) {
+      setComputer({ ...computer, choice:  "Sten"  })
+    } else if( computerClick === 2) {
+      setComputer({ ...computer, choice:  "Sax"  })    
+    } else {
+        setComputer({ ...computer, choice:  "Påse"  })
+      }
+}
+
+
+useEffect (() => {
+ 
+  if(player.choice && computer.choice) {
+    setPlayer({...player, choice: ""})
+    setComputer({...computer, choice: ""})
+    console.log(player.choice)
+  }
+  // {!isTurn ? makeComputerChoice() : isTurn}
+},[player.choice, computer.choice])
+
   return (
     <>
       {start === false ? <>
@@ -34,7 +60,46 @@ const Singleplayer = ({ start, setStart }) => {
         ></input>
         <StartButton setStart={setStart} />
       </>
-        : null }
+        : 
+        <>
+          <h1>Sten-Sax-Påse</h1>
+          <p>Gör ditt val</p>
+          <Button
+            value="Sten"
+            player1={player}
+            computer={computer}
+            setComputer={setComputer}
+            setPlayer1={setPlayer}
+            isTurn={isTurn}
+            setIsTurn={setIsTurn}
+            gameMode={gameMode}
+            makeComputerChoice={makeComputerChoice}
+          />
+           <Button
+            value="Sax"
+            player1={player}
+            computer={computer}
+            setComputer={setComputer}
+            setPlayer1={setPlayer}
+            isTurn={isTurn}
+            setIsTurn={setIsTurn}
+            gameMode={gameMode}
+            makeComputerChoice={makeComputerChoice}
+          />
+           <Button
+            value="Påse"
+            player1={player}
+            computer={computer}
+            setComputer={setComputer}
+            setPlayer1={setPlayer}
+            isTurn={isTurn}
+            setIsTurn={setIsTurn}
+            gameMode={gameMode}
+            makeComputerChoice={makeComputerChoice}
+          />
+          <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer}/>
+        </>
+         }
     </>
   )
 }

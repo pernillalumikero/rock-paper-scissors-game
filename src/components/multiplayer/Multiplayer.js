@@ -4,7 +4,7 @@ import Button from "../../button/Button";
 import StartButton from "../startbutton/StartButton";
 import DecideWinner from "../../decidewinner/DecideWinner";
 
-const Multiplayer = ({ start, setStart }) => {
+const Multiplayer = ({ start, setStart, gameMode }) => {
   const [player1, setPlayer1] = useState({
     name: "",
     choice: "",
@@ -32,7 +32,7 @@ const Multiplayer = ({ start, setStart }) => {
 
   return (
     <>
-      {start === false ? (
+      {start === false ? 
         <>
           <input
             required
@@ -52,7 +52,7 @@ const Multiplayer = ({ start, setStart }) => {
           ></input>
           <StartButton setStart={setStart} />
         </>
-      ) : (
+       : 
         <>
           <h1>Sten-Sax-Påse</h1>
           <p>Gör ditt val: <b>{isTurn ? player1.name : player2.name}</b></p>
@@ -64,6 +64,7 @@ const Multiplayer = ({ start, setStart }) => {
             setPlayer1={setPlayer1}
             isTurn={isTurn}
             setIsTurn={setIsTurn}
+            gameMode={gameMode}
           />
           {console.log(player1)}
           {console.log(player2)}
@@ -75,6 +76,7 @@ const Multiplayer = ({ start, setStart }) => {
             setPlayer2={setPlayer2}
             isTurn={isTurn}
             setIsTurn={setIsTurn}
+            gameMode={gameMode}
           />
           <Button
             value="Påse"
@@ -84,10 +86,11 @@ const Multiplayer = ({ start, setStart }) => {
             setPlayer2={setPlayer2}
             isTurn={isTurn}
             setIsTurn={setIsTurn}
+            gameMode={gameMode}
           />
           <DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2}/>
         </>
-      )}
+      }
     </>
   );
 };

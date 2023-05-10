@@ -15,9 +15,9 @@ function App() {
       {gameMode === null && start === false ? 
       <GameMode setGameMode={setGameMode} /> : null}
       {gameMode === "Singleplayer" 
-      ? <Singleplayer start={start} setStart={setStart} /> 
+      ? <Singleplayer start={start} setStart={setStart} gameMode={gameMode} /> 
       : gameMode === "Multiplayer" 
-      ?  <Multiplayer start={start} setStart={setStart} />
+      ?  <Multiplayer start={start} setStart={setStart} gameMode={gameMode} />
       : null }
     </div>
   );

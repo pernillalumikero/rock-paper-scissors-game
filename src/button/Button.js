@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Button = ({ value, player1, player2, setPlayer1, setPlayer2, isTurn, setIsTurn }) => {
+const Button = ({ value, player1, player2, setPlayer1, setPlayer2, isTurn, setIsTurn, gameMode, makeComputerChoice }) => {
 
 
-    const handleClick = () => {
+  
+  const handleClick = () => {
+
+      if(gameMode === "Multiplayer") {
         // console.log(player1)
         if (isTurn) {
             setPlayer1({ ...player1, choice:  value  })
@@ -12,6 +15,11 @@ const Button = ({ value, player1, player2, setPlayer1, setPlayer2, isTurn, setIs
             setPlayer2({ ...player2, choice:  value  })
             setIsTurn(true)
         }
+      } else {
+        setPlayer1({ ...player1, choice:  value  })
+        makeComputerChoice()
+        
+      }
     }
 
     return (
