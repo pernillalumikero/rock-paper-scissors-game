@@ -55,7 +55,7 @@ const Multiplayer = ({ start, setStart }) => {
       ) : (
         <>
           <h1>Sten-Sax-Påse</h1>
-          <p>Gör ditt val:</p>
+          <p>Gör ditt val: <b>{isTurn ? player1.name : player2.name}</b></p>
           <Button
             value="Sten"
             player1={player1}

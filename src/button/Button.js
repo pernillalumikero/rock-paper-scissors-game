@@ -4,12 +4,12 @@ const Button = ({ value, player1, player2, setPlayer1, setPlayer2, isTurn, setIs
 
 
     const handleClick = () => {
-        console.log(player1)
+        // console.log(player1)
         if (isTurn) {
-            setPlayer1({ ...player1, choice: { value } })
+            setPlayer1({ ...player1, choice:  value  })
             setIsTurn(false)
         } else {
-            setPlayer2({ ...player2, choice: { value } })
+            setPlayer2({ ...player2, choice:  value  })
             setIsTurn(true)
         }
     }

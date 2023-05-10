@@ -3,10 +3,15 @@ import React, { useEffect, useState } from 'react'
 const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2 }) => {
     const [result, setResult] = useState('')
     const compareChoices = () => {
-        if(player1.choice === player2.choice){
+
+        if(!player1.choice || !player2.choice) {
+            return
+        } else if(player1.choice === player2.choice){
             setPlayer1({...player1, isWinner: false})
             setPlayer2({...player2, isWinner: false})
             setResult('Oavgjort!')
+        } else if( !player1.choice){
+            setResult('')
         } else if(
             (player1.choice === 'Sten' && player2.choice === 'Sax') ||
             (player1.choice === 'Sax' && player2.choice === 'Påse') ||
@@ -22,7 +27,7 @@ const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2 }) => {
     }
     useEffect(() => {
         compareChoices();
-    },[player2])
+    },[player1.choice, player2.choice])
 
   return (
     <div>{result}</div>
