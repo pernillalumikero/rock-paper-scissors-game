@@ -4,6 +4,7 @@ import Button from "../../button/Button";
 import StartButton from "../startbutton/StartButton";
 import DecideWinner from "../../decidewinner/DecideWinner";
 import History from "../history/History";
+import ShowPictures from "../showpictures/ShowPictures";
 
 const Multiplayer = ({ start, setStart, gameMode }) => {
   const [player1, setPlayer1] = useState({
@@ -72,6 +73,7 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
         <>
           <p>Gör ditt val: <b>{isTurn ? player1.name : player2.name}</b></p>
           <div>{buttons}</div>
+          <ShowPictures player1={player1} player2={player2} />
           <DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2} history={history} setHistory={setHistory} />
           <History player1={player1} player2={player2} history={history} />
         </>
