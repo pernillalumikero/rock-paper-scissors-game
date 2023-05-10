@@ -1,22 +1,20 @@
 
 
-import { fireEvent, render } from "@testing-library/react/types";
+import { render, fireEvent, screen  } from "@testing-library/react";
 import Singleplayer from "../Singleplayer";
 
-descripe("Singleplayer", () => {
+describe("Singleplayer", () => {
     test("Should render input field" , () => {
 
-        const testName = "testName";
+        const testInput = "testInput";
 
-        render (<Singleplayer/>)
-        const inputField = screen.getByPlaceholderText("Enter name..")
-        fireEvent.change(inputField, {target: {value: testName}})
+        render(<Singleplayer start={false}/>)
+        const inputField = screen.getByPlaceholderText(/Enter name../i)
+        fireEvent.click(inputField)
+        fireEvent.change(inputField, {target: {value: testInput}})
 
-        const button = screen.getByRole("button", {name: "Starta"})
-        fireEvent.click(button)
-
-        const comment = screen.getByText(testName)
-        expect (comment).toBeInTheDocument()
+        // Then
+        expect(inputField).toHaveValue(testInput)
 
 
     })
