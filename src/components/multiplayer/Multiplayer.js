@@ -27,11 +27,28 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
     player2Choice: player2.choice,
     winner: ""
   }
-]);
+  ]);
+
+  const buttonValues = ["Sten", "Sax", "Påse"];
+
+  const buttons = buttonValues.map((value, index) => (
+    <Button
+      key={index}
+      value={value}
+      player1={player1}
+      player2={player2}
+      setPlayer2={setPlayer2}
+      setPlayer1={setPlayer1}
+      isTurn={isTurn}
+      setIsTurn={setIsTurn}
+      setHistory={setHistory}
+      gameMode={gameMode}
+    />
+  ));
 
   return (
     <>
-      {start === false ? 
+      {start === false ?
         <>
           <input
             required
@@ -51,47 +68,11 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
           ></input>
           <StartButton setStart={setStart} />
         </>
-       : 
+        :
         <>
-          <h1>Sten-Sax-Påse</h1>
           <p>Gör ditt val: <b>{isTurn ? player1.name : player2.name}</b></p>
-          <Button
-            value="Sten"
-            player1={player1}
-            player2={player2}
-            setPlayer2={setPlayer2}
-            setPlayer1={setPlayer1}
-            isTurn={isTurn}
-            setIsTurn={setIsTurn}
-            setHistory={setHistory}
-            gameMode={gameMode}
-          />
-          <Button
-            value="Sax"
-            player1={player1}
-            player2={player2}
-            setPlayer1={setPlayer1}
-            setPlayer2={setPlayer2}
-            isTurn={isTurn}
-            setIsTurn={setIsTurn}
-            setHistory={setHistory}
-            gameMode={gameMode}
-          />
-          <Button
-            value="Påse"
-            player1={player1}
-            player2={player2}
-            setPlayer1={setPlayer1}
-            setPlayer2={setPlayer2}
-            isTurn={isTurn}
-            setIsTurn={setIsTurn}
-            setHistory={setHistory}
-            gameMode={gameMode}
-          />
-          {console.log(player1)}
-          {console.log(player2)}
-          {console.log(history)}
-          <DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2} history={history} setHistory={setHistory}/>
+          <div>{buttons}</div>
+          <DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2} history={history} setHistory={setHistory} />
           <History player1={player1} player2={player2} history={history} />
         </>
       }

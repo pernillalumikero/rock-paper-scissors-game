@@ -7,7 +7,7 @@ import History from '../history/History';
 const Singleplayer = ({ start, setStart, gameMode }) => {
 
   const [isTurn, setIsTurn] = useState(true);
-  
+
   const [player, setPlayer] = useState({
     name: "",
     choice: "",
@@ -27,30 +27,50 @@ const Singleplayer = ({ start, setStart, gameMode }) => {
     player2Choice: computer.choice,
     winner: ""
   }
-]);
+  ])
+
 
   const makeComputerChoice = () => {
     const computerClick = parseInt(Math.floor((Math.random() * 3) + 1))
 
-    if(computerClick === 1) {
-      setComputer({ ...computer, choice:  "Sten"  })
-    } else if( computerClick === 2) {
-      setComputer({ ...computer, choice:  "Sax"  })    
+    if (computerClick === 1) {
+      setComputer({ ...computer, choice: "Sten" })
+    } else if (computerClick === 2) {
+      setComputer({ ...computer, choice: "Sax" })
     } else {
-        setComputer({ ...computer, choice:  "Påse"  })
-      }
-}
-
-
-useEffect (() => {
- 
-  if(player.choice && computer.choice) {
-    setPlayer({...player, choice: ""})
-    setComputer({...computer, choice: ""})
-    console.log(player.choice)
+      setComputer({ ...computer, choice: "Påse" })
+    }
   }
-  // {!isTurn ? makeComputerChoice() : isTurn}
-},[player.choice, computer.choice])
+
+const buttonValues = ["Sten", "Sax", "Påse"];
+
+const buttons = buttonValues.map((value, index) => (
+  <Button
+    key={index}
+    value={value}
+    player1={player}
+    computer={computer}
+    setComputer={setComputer}
+    setPlayer1={setPlayer}
+    isTurn={isTurn}
+    setIsTurn={setIsTurn}
+    gameMode={gameMode}
+    makeComputerChoice={makeComputerChoice}
+    setHistory={setHistory}
+    history={history}
+  />
+));
+
+
+  useEffect(() => {
+
+    if (player.choice && computer.choice) {
+      setPlayer({ ...player, choice: "" })
+      setComputer({ ...computer, choice: "" })
+      console.log(player.choice)
+    }
+    // {!isTurn ? makeComputerChoice() : isTurn}
+  }, [player.choice, computer.choice])
 
   return (
     <>
@@ -60,58 +80,18 @@ useEffect (() => {
           placeholder="Enter name.."
           name="player1"
           value={player.name}
-          onChange={(e) => setPlayer({name: e.target.value})}
+          onChange={(e) => setPlayer({ name: e.target.value })}
         ></input>
         <StartButton setStart={setStart} />
       </>
-        : 
+        :
         <>
-          <h1>Sten-Sax-Påse</h1>
           <p>Gör ditt val</p>
-          <Button
-            value="Sten"
-            player1={player}
-            computer={computer}
-            setComputer={setComputer}
-            setPlayer1={setPlayer}
-            isTurn={isTurn}
-            setIsTurn={setIsTurn}
-            gameMode={gameMode}
-            makeComputerChoice={makeComputerChoice}
-            setHistory={setHistory}
-            history={history}
-          />
-           <Button
-            value="Sax"
-            player1={player}
-            computer={computer}
-            setComputer={setComputer}
-            setPlayer1={setPlayer}
-            isTurn={isTurn}
-            setIsTurn={setIsTurn}
-            gameMode={gameMode}
-            makeComputerChoice={makeComputerChoice}
-            setHistory={setHistory}
-            history={history}
-          />
-           <Button
-            value="Påse"
-            player1={player}
-            computer={computer}
-            setComputer={setComputer}
-            setPlayer1={setPlayer}
-            isTurn={isTurn}
-            setIsTurn={setIsTurn}
-            gameMode={gameMode}
-            makeComputerChoice={makeComputerChoice}
-            setHistory={setHistory}
-            history={history}
-          />
-          
-          <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer} setHistory= {setHistory} history={history}/>
+          <div>{buttons}</div>
+          <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer} setHistory={setHistory} history={history} />
           <History player1={player} player2={computer} history={history} />
         </>
-         }
+      }
     </>
   )
 }

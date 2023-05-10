@@ -13,6 +13,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Sten-Sax-Påse</h1>
       {gameMode === null && start === false ? 
       <GameMode setGameMode={setGameMode} /> : null}
       {gameMode === "Singleplayer" 
