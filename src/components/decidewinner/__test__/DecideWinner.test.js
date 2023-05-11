@@ -16,17 +16,58 @@ describe("DecideWinner", () => {
             isWinner: false
         }
 
-        const setPlayer1 = player1
-        const setPlayer2 = {player2}
-
         //When
-        render(<DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2} />)
+        render(<DecideWinner player1={player1} player2={player2} setPlayer1={() =>{}} setPlayer2={() =>{}} history={[]} setHistory={() =>{}}/>)
 
-        const result = screen.getByText(`Spelare1 vann!`)
-
+        const result = screen.getByRole("heading", {level:2})
 
         //Then
         expect(result).toHaveTextContent(`Spelare1 vann!`)
+    })
+
+    test("Should display that player2 won", () => {
+        //Given
+        const player1 = {
+            name: "Spelare1",
+            choice: "Sten",
+            isWinner: false
+        }
+
+        const player2= {
+            name: "Spelare2",
+            choice: "Påse",
+            isWinner: true
+        }
+
+        //When
+        render(<DecideWinner player1={player1} player2={player2} setPlayer1={() =>{}} setPlayer2={() =>{}} history={[]} setHistory={() =>{}}/>)
+        const result = screen.getByRole("heading", {level:2})
+
+        //Then
+        expect(result).toHaveTextContent(`Spelare2 vann!`)
+    })
+
+    test("Should display that it was a tie", () => {
+        //Given
+        const player1 = {
+            name: "Spelare1",
+            choice: "Sten",
+            isWinner: false
+        }
+
+        const player2= {
+            name: "Spelare2",
+            choice: "Sten",
+            isWinner: false
+        }
+
+        //When
+        render(<DecideWinner player1={player1} player2={player2} setPlayer1={() =>{}} setPlayer2={() =>{}} history={[]} setHistory={() =>{}}/>)
+        const result = screen.getByRole("heading", {level:2})
+
+        //Then
+        expect(result).toHaveTextContent(`Oavgjort!`)
+
     })
 
 })
@@ -42,6 +83,17 @@ describe("DecideWinner", () => {
 // //         //Then
 // //     }
 // // }
+
+// test.each([
+//     ["Sax", "Påse", "Spelare1 vann!"],
+//     ["Påse", "Sten", "Spelare1 vann!"],
+//     ["Sten", "Sax", "Spelare1 vann!"]
+// ])("when player1 chooses %i and player2 chooses %i should return %i", (x, y, expected) => {
+//     //When
+//     const result = screen.getByRole("heading", {level:2})
+//     //Then
+//     expect(result).toHaveTextContent(expected)
+// }
 
 // // test.each([
 // //     [0, 0, 0],
