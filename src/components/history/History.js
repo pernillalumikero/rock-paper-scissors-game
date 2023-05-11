@@ -4,7 +4,7 @@ const History = ({history}) => {
   
   return (
     <>
-      <ul>
+      <ul id="ul">
         {history.length > 1 ? 
           history.map((item, index) =>{
           return (

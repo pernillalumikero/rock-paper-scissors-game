@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Button from '../../button/Button';
+import Button from '../button/Button';
 import StartButton from '../startbutton/StartButton'
-import DecideWinner from '../../decidewinner/DecideWinner';
+import DecideWinner from '../decidewinner/DecideWinner';
 import History from '../history/History';
 import ShowPictures from '../showpictures/ShowPictures';
 

@@ -3,6 +3,6 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.queryByText(/learn react/i);
-  expect(linkElement).not.toBeInTheDocument();
+  const header = screen.getByText(/Sten-Sax-Påse/i);
+  expect(header).toBeInTheDocument()
 });

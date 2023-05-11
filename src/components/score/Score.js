@@ -18,7 +18,7 @@ const Score = ({result, player1, player2}) => {
 
   return (
     <div>
-      <p>
+      <p id="score">
         Ställningen är {player1.name}: {player1Score} {player2.name}: {player2Score}
       </p>
     </div>
