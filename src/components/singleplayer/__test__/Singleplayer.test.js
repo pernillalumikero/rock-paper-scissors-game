@@ -1,8 +1,6 @@
 
 
 import { render, fireEvent, screen  } from "@testing-library/react";
-import Button from "../../../button/Button";
-import StartButton from "../../startbutton/StartButton";
 import Singleplayer from "../Singleplayer";
 
 describe("Singleplayer", () => {
