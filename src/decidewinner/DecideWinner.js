@@ -3,6 +3,7 @@ import Score from '../components/score/Score'
 
 const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2, history, setHistory }) => {
     const [result, setResult] = useState('')
+    
     const compareChoices = () => {
 
         if(!player1.choice || !player2.choice) {
