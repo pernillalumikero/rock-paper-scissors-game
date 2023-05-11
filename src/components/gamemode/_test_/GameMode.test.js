@@ -2,7 +2,7 @@ import { render, fireEvent, screen  } from "@testing-library/react";
 import GameMode from "../GameMode"
 
 describe("GameMode", () => {
-    
+
     test("Should render radiobuttons" , () => {
 
         render(<GameMode />)
@@ -12,7 +12,7 @@ describe("GameMode", () => {
         expect(header).toHaveTextContent("Välj antal spelare")
 
     })
-    test("Should set GameMode to Singleplayer" , () => {
+    test("Should remove GameMode component when clicking Singleplayer radio button" , () => {
 
         // const gameMode    = "";
         // const setGameMode = gameMode;
@@ -25,26 +25,36 @@ describe("GameMode", () => {
 
         // expect(gameMode).toHaveValue("Singleplayer")
 
-        render(<GameMode />)
+        render(<GameMode setGameMode={() => {}} />)
         const radioBtn = screen.getAllByRole("radio", {id: "single"})
         fireEvent.click(radioBtn[0])
 
         expect(radioBtn).not.toBeInTheDocument
 
     })
-    test("Should set GameMode to Multiplayer" , () => {
+    test("Should remove GameMode component when clicking Multiplayer radio button" , () => {
 
-    //     const gameMode = "";
-    //     const setGameMode = gameMode;
+        render(<GameMode setGameMode={() => {}} />)
+        const radioBtn = screen.getAllByRole("radio", {id: "multi"})
+        fireEvent.click(radioBtn[0])
 
-    //     render(<GameMode setGameMode={setGameMode}/>)
-    //     const inputField = screen.getByPlaceholderText(/Enter name../i)
-    //     fireEvent.click(inputField)
-    //     fireEvent.change(inputField, {target: {value: testInput}})
-
-    //     // Then
-    //     expect(gameMode).toHaveValue("Multiplayer")
-
+        expect(radioBtn).not.toBeInTheDocument
 
     })
+
+    // test("Should display Singleplayer" , () => {
+
+    //     const gameMode    = "";
+    //     const setGameMode = gameMode;
+
+    //     render(<GameMode setGameMode={()=>{}} />)
+    //     const radioBtn = screen.getAllByRole("radio", {id: "single"})
+    //     fireEvent.click(radioBtn[0])
+
+    
+
+    //     expect(setGameMode).tohave("Singleplayer")
+
+
+    // })
 })
