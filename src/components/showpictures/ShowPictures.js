@@ -9,7 +9,7 @@ const ShowPictures = ({ player1, player2 }) => {
     ];
 
     const getImg = (choice) => {
-        let i = 0
+        let i = 3
         if (choice === "Sax") {
             i = 0;
         } else if (choice === "Sten") {
