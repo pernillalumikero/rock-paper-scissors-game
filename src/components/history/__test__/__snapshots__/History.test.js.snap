@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History Should render History 1`] = `
+<DocumentFragment>
+  <ul
+    id="ul"
+  >
+    <li>
+      <b>
+        John rock
+      </b>
+        Jane paper
+    </li>
+    <li>
+      John rock  
+      <b>
+        Jane paper
+      </b>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
