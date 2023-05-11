@@ -6,9 +6,25 @@ describe("History", () => {
 
     test("Should render History", () => {
 
-        render(<History history={history} />)
-        const historyComponent = screen.getAllByRole("ul", {id: "ul"})
-        expect(historyComponent).toBeInTheDocument();
+        const history = [{
+            winner: "John",
+            playerOne: "John",
+            player1Choice: "rock",
+            playerTwo: "Jane",
+            player2Choice: "paper"
+          }, 
+          {
+            winner: "Jane",
+            playerOne: "John",
+            player1Choice: "rock",
+            playerTwo: "Jane",
+            player2Choice: "paper"
+          }];
+
+        const tree = render(<History history={history} />).asFragment();
+        expect(tree).toMatchSnapshot()
+        screen.debug()
+        
 
     })
 
