@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Score from '../score/Score'
-
+ 
 const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2, history, setHistory }) => {
     const [result, setResult] = useState('')
     
