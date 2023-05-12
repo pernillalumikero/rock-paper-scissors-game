@@ -63,7 +63,7 @@ const DecideWinner = ({ player1, player2, setPlayer1, setPlayer2, history, setHi
 
   return (
     <div>
-    <h2>{result}</h2>
+    <h2 id="result">{result}</h2>
     <Score player1={player1} player2={player2} result={result} />
     </div>
   )

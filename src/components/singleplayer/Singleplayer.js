@@ -87,7 +87,7 @@ const buttons = buttonValues.map((value, index) => (
       </>
         :
         <>
-          <p>Gör ditt val</p>
+          <p id="make-choice">Gör ditt val</p>
           <div>{buttons}</div>
           <ShowPictures player1={player} player2={computer} />
           <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer} setHistory={setHistory} history={history} />

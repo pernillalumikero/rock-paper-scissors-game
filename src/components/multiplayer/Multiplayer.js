@@ -71,7 +71,7 @@ const Multiplayer = ({ start, setStart, gameMode }) => {
         </>
         :
         <>
-          <p>Gör ditt val: <b>{isTurn ? player1.name : player2.name}</b></p>
+          <p id="make-choice-multi">Gör ditt val: <b>{isTurn ? player1.name : player2.name}</b></p>
           <div>{buttons}</div>
           <ShowPictures player1={player1} player2={player2} />
           <DecideWinner player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2} history={history} setHistory={setHistory} />
