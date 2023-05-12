@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Button from '../button/Button';
 import StartButton from '../startbutton/StartButton'
 import DecideWinner from '../decidewinner/DecideWinner';
@@ -43,35 +43,24 @@ const Singleplayer = ({ start, setStart, gameMode }) => {
     }
   }
 
-const buttonValues = ["Sten", "Sax", "Påse"];
+  const buttonValues = ["Sten", "Sax", "Påse"];
 
-const buttons = buttonValues.map((value, index) => (
-  <Button
-    key={index}
-    value={value}
-    player1={player}
-    computer={computer}
-    setComputer={setComputer}
-    setPlayer1={setPlayer}
-    isTurn={isTurn}
-    setIsTurn={setIsTurn}
-    gameMode={gameMode}
-    makeComputerChoice={makeComputerChoice}
-    setHistory={setHistory}
-    history={history}
-  />
-));
-
-
-  useEffect(() => {
-
-    if (player.choice && computer.choice) {
-      setPlayer({ ...player, choice: "" })
-      setComputer({ ...computer, choice: "" })
-      console.log(player.choice)
-    }
-    // {!isTurn ? makeComputerChoice() : isTurn}
-  }, [player.choice, computer.choice])
+  const buttons = buttonValues.map((value, index) => (
+    <Button
+      key={index}
+      value={value}
+      player1={player}
+      computer={computer}
+      setComputer={setComputer}
+      setPlayer1={setPlayer}
+      isTurn={isTurn}
+      setIsTurn={setIsTurn}
+      gameMode={gameMode}
+      makeComputerChoice={makeComputerChoice}
+      setHistory={setHistory}
+      history={history}
+    />
+  ));
 
   return (
     <>
@@ -89,9 +78,15 @@ const buttons = buttonValues.map((value, index) => (
         <>
           <p id="make-choice">Gör ditt val</p>
           <div>{buttons}</div>
-          <ShowPictures player1={player} player2={computer} />
-          <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer} setHistory={setHistory} history={history} />
-          <History player1={player} player2={computer} history={history} />
+          {!isTurn
+            ? <>
+              <ShowPictures player1={player} player2={computer} />
+              <DecideWinner player1={player} player2={computer} setPlayer1={setPlayer} setPlayer2={setComputer} setHistory={setHistory} history={history}/>
+              <History player1={player} player2={computer} history={history} />
+            </>
+            : null
+        }
+
         </>
       }
     </>

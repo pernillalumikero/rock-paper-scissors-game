@@ -89,8 +89,6 @@ decidewinner
 -----------
 Should diplay who won
 
-Should display text if lost
-
 Should display text if draw
 
 Should get winner when decideWinner is called
